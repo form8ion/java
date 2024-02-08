@@ -15,6 +15,12 @@ Java language plugin for the @form8ion toolset
 * [Usage](#usage)
   * [Installation](#installation)
   * [Example](#example)
+    * [Import](#import)
+    * [Execute](#execute)
+  * [API](#api)
+    * [`scaffold`](#scaffold)
+      * [`projectRoot` __string__ (_required_)](#projectroot-string-required)
+      * [`projectName` __string__ (_required_)](#projectname-string-required)
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
   * [Verification](#verification)
@@ -53,6 +59,18 @@ import {scaffold} from '@form8ion/java';
   });
 })();
 ```
+
+### API
+
+#### `scaffold`
+
+##### `projectRoot` __string__ (_required_)
+
+path to the root of the project
+
+##### `projectName` __string__ (_required_)
+
+name of the project
 
 ## Contributing
 
