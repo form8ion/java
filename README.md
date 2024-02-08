@@ -12,18 +12,26 @@ Java language plugin for the @form8ion toolset
 
 ## Table of Contents
 
+* [Features](#features)
+  * [`scaffold`](#scaffold)
 * [Usage](#usage)
   * [Installation](#installation)
   * [Example](#example)
     * [Import](#import)
     * [Execute](#execute)
   * [API](#api)
-    * [`scaffold`](#scaffold)
+    * [`scaffold`](#scaffold-1)
       * [`projectRoot` __string__ (_required_)](#projectroot-string-required)
       * [`projectName` __string__ (_required_)](#projectname-string-required)
 * [Contributing](#contributing)
   * [Dependencies](#dependencies)
   * [Verification](#verification)
+
+## Features
+
+### `scaffold`
+
+* creates a [minimal POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Minimal_POM)
 
 ## Usage
 
