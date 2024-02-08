@@ -17,6 +17,13 @@ describe('pom scaffolder', () => {
 
     await scaffold({projectRoot});
 
-    expect(fs.writeFile).toHaveBeenCalledWith(`${projectRoot}/pom.xml`, '');
+    expect(fs.writeFile)
+      .toHaveBeenCalledWith(
+        `${projectRoot}/pom.xml`,
+        `<project>
+  <modelVersion>4.0.0</modelVersion>
+</project>
+`
+      );
   });
 });
