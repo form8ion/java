@@ -13,8 +13,9 @@ describe('scaffolder', () => {
 
   it('should configure java', async () => {
     const projectRoot = any.string();
+    const projectName = any.word();
 
-    expect(await scaffold({projectRoot})).toEqual({});
-    expect(scaffoldPom).toHaveBeenCalledWith({projectRoot});
+    expect(await scaffold({projectRoot, projectName})).toEqual({});
+    expect(scaffoldPom).toHaveBeenCalledWith({projectRoot, projectName});
   });
 });

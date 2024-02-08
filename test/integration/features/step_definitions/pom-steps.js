@@ -8,5 +8,5 @@ Then('the pom file is created', async function () {
   const parser = new XMLParser();
   const parsedContent = parser.parse(await fs.readFile(`${this.projectRoot}/pom.xml`, 'utf-8'));
 
-  assert.deepEqual(parsedContent, {project: {modelVersion: '4.0.0'}});
+  assert.deepEqual(parsedContent, {project: {modelVersion: '4.0.0', artifactId: this.projectName}});
 });

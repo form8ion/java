@@ -14,14 +14,16 @@ describe('pom scaffolder', () => {
 
   it('should create the pom file', async () => {
     const projectRoot = any.string();
+    const projectName = any.word();
 
-    await scaffold({projectRoot});
+    await scaffold({projectRoot, projectName});
 
     expect(fs.writeFile)
       .toHaveBeenCalledWith(
         `${projectRoot}/pom.xml`,
         `<project>
   <modelVersion>4.0.0</modelVersion>
+  <artifactId>${projectName}</artifactId>
 </project>
 `
       );
