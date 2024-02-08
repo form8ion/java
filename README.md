@@ -12,7 +12,12 @@ Java language plugin for the @form8ion toolset
 
 ## Table of Contents
 
-Run `npm run generate:md` to generate a table of contents
+* [Usage](#usage)
+  * [Installation](#installation)
+  * [Example](#example)
+* [Contributing](#contributing)
+  * [Dependencies](#dependencies)
+  * [Verification](#verification)
 
 ## Usage
 
@@ -32,7 +37,22 @@ $ npm install @form8ion/java --save
 
 ### Example
 
-run `npm run generate:md` to inject the usage example
+#### Import
+
+```javascript
+import {scaffold} from '@form8ion/java';
+```
+
+#### Execute
+
+```javascript
+(async () => {
+  await scaffold({
+    projectRoot: process.cwd(),
+    projectName: 'project-name'
+  });
+})();
+```
 
 ## Contributing
 
