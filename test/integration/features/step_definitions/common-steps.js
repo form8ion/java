@@ -7,11 +7,11 @@ import stubbedFs from 'mock-fs';
 const __dirname = dirname(fileURLToPath(import.meta.url));          // eslint-disable-line no-underscore-dangle
 const stubbedNodeModules = stubbedFs.load(resolve(__dirname, '..', '..', '..', '..', 'node_modules'));
 
-let scaffold;
+let scaffold, lift;
 
 Before(async function () {
   // eslint-disable-next-line import/no-extraneous-dependencies,import/no-unresolved
-  ({scaffold} = await import('@form8ion/java'));
+  ({scaffold, lift} = await import('@form8ion/java'));
 
   stubbedFs({
     node_modules: stubbedNodeModules
@@ -26,4 +26,8 @@ After(function () {
 
 When('the project is scaffolded', async function () {
   await scaffold({projectRoot: this.projectRoot, projectName: this.projectName});
+});
+
+When('the project is lifted', async function () {
+  await lift({projectRoot: this.projectRoot});
 });
