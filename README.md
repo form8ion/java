@@ -12,7 +12,26 @@ Java language plugin for the @form8ion toolset
 
 ## Table of Contents
 
-Run `npm run generate:md` to generate a table of contents
+* [Features](#features)
+  * [`scaffold`](#scaffold)
+* [Usage](#usage)
+  * [Installation](#installation)
+  * [Example](#example)
+    * [Import](#import)
+    * [Execute](#execute)
+  * [API](#api)
+    * [`scaffold`](#scaffold-1)
+      * [`projectRoot` __string__ (_required_)](#projectroot-string-required)
+      * [`projectName` __string__ (_required_)](#projectname-string-required)
+* [Contributing](#contributing)
+  * [Dependencies](#dependencies)
+  * [Verification](#verification)
+
+## Features
+
+### `scaffold`
+
+* creates a [minimal POM](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html#Minimal_POM)
 
 ## Usage
 
@@ -32,7 +51,34 @@ $ npm install @form8ion/java --save
 
 ### Example
 
-run `npm run generate:md` to inject the usage example
+#### Import
+
+```javascript
+import {scaffold} from '@form8ion/java';
+```
+
+#### Execute
+
+```javascript
+(async () => {
+  await scaffold({
+    projectRoot: process.cwd(),
+    projectName: 'project-name'
+  });
+})();
+```
+
+### API
+
+#### `scaffold`
+
+##### `projectRoot` __string__ (_required_)
+
+path to the root of the project
+
+##### `projectName` __string__ (_required_)
+
+name of the project
 
 ## Contributing
 

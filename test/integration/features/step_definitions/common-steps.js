@@ -16,6 +16,8 @@ Before(async function () {
   stubbedFs({
     node_modules: stubbedNodeModules
   });
+
+  this.projectRoot = process.cwd();
 });
 
 After(function () {
@@ -23,5 +25,5 @@ After(function () {
 });
 
 When('the project is scaffolded', async function () {
-  await scaffold({projectRoot: process.cwd()});
+  await scaffold({projectRoot: this.projectRoot, projectName: this.projectName});
 });
