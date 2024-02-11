@@ -1,8 +1,10 @@
 import {promises as fs} from 'node:fs';
 import {XMLBuilder, XMLParser} from 'fast-xml-parser';
 
+import {getPathTo} from './file.js';
+
 export default async function ({projectRoot}) {
-  const pathToPom = `${projectRoot}/pom.xml`;
+  const pathToPom = getPathTo(projectRoot);
   const parser = new XMLParser();
   const builder = new XMLBuilder({format: true});
   const existingPomContents = parser.parse(await fs.readFile(pathToPom, 'utf-8'));
