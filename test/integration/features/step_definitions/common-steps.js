@@ -29,5 +29,5 @@ When('the project is scaffolded', async function () {
 });
 
 When('the project is lifted', async function () {
-  await lift({projectRoot: this.projectRoot});
+  await lift({projectRoot: this.projectRoot, vcs: this.vcsDetails});
 });

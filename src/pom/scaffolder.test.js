@@ -1,14 +1,13 @@
-import {promises as fs} from 'node:fs';
-
 import {describe, expect, it, vi, afterEach} from 'vitest';
 import any from '@travi/any';
 import {when} from 'jest-when';
 
+import {write} from './xml/index.js';
 import {getPathTo} from './file.js';
 import scaffold from './scaffolder.js';
 
-vi.mock('node:fs');
 vi.mock('./file.js');
+vi.mock('./xml/index.js');
 
 describe('pom scaffolder', () => {
   afterEach(() => {
@@ -23,14 +22,15 @@ describe('pom scaffolder', () => {
 
     await scaffold({projectRoot, projectName});
 
-    expect(fs.writeFile)
-      .toHaveBeenCalledWith(
-        pathToPomFile,
-        `<project>
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>${projectName}</artifactId>
-</project>
-`
-      );
+    expect(write)
+      .toHaveBeenCalledWith({
+        path: pathToPomFile,
+        contents: {
+          project: {
+            modelVersion: '4.0.0',
+            artifactId: projectName
+          }
+        }
+      });
   });
 });

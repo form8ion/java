@@ -1,13 +1,14 @@
-import {promises as fs} from 'node:fs';
-import {XMLBuilder} from 'fast-xml-parser';
-
+import {write} from './xml/index.js';
 import {getPathTo} from './file.js';
 
 export default async function ({projectRoot, projectName}) {
-  const builder = new XMLBuilder({format: true});
-
-  await fs.writeFile(
-    getPathTo(projectRoot),
-    builder.build({project: {modelVersion: '4.0.0', artifactId: projectName}})
-  );
+  await write({
+    path: getPathTo(projectRoot),
+    contents: {
+      project: {
+        modelVersion: '4.0.0',
+        artifactId: projectName
+      }
+    }
+  });
 }
