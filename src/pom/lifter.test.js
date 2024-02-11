@@ -1,10 +1,8 @@
-import {promises as fs} from 'node:fs';
-
-import {describe, it, expect, vi, afterEach} from 'vitest';
+import {afterEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
 import {when} from 'jest-when';
 
-import {write} from './xml/index.js';
+import {parse, write} from './xml/index.js';
 import {getPathTo} from './file.js';
 import defineScmDetails from './scm.js';
 import liftPom from './lifter.js';
@@ -23,11 +21,12 @@ describe('pom lifter', () => {
     const projectRoot = any.string();
     const pathToPomFile = any.string();
     const vcsDetails = any.simpleObject();
+    const existingProjectDetails = any.simpleObject();
     const scmDetails = any.simpleObject();
-    when(fs.readFile)
-      .calledWith(pathToPomFile, 'utf-8')
-      .mockResolvedValue('<project><modelVersion>4.0.0</modelVersion></project>');
     when(getPathTo).calledWith(projectRoot).mockReturnValue(pathToPomFile);
+    when(parse)
+      .calledWith({path: pathToPomFile})
+      .mockResolvedValue({project: existingProjectDetails});
     when(defineScmDetails).calledWith(vcsDetails).mockReturnValue(scmDetails);
 
     expect(await liftPom({projectRoot, vcs: vcsDetails})).toEqual({});
@@ -35,7 +34,7 @@ describe('pom lifter', () => {
       path: pathToPomFile,
       contents: {
         project: {
-          modelVersion: '4.0.0',
+          ...existingProjectDetails,
           scm: scmDetails
         }
       }
