@@ -54,17 +54,20 @@ $ npm install @form8ion/java --save
 #### Import
 
 ```javascript
-import {scaffold} from '@form8ion/java';
+import {scaffold, lift, test} from '@form8ion/java';
 ```
 
 #### Execute
 
 ```javascript
 (async () => {
-  await scaffold({
-    projectRoot: process.cwd(),
-    projectName: 'project-name'
-  });
+  const projectRoot = process.cwd();
+
+  await scaffold({projectRoot, projectName: 'project-name'});
+
+  if (await test({projectRoot})) {
+    await lift({projectRoot, vcs: {}});
+  }
 })();
 ```
 
