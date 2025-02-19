@@ -76,6 +76,6 @@
   },
   "dependencies": {
     "@form8ion/core": "^4.2.0",
-    "fast-xml-parser": "^4.3.4"
+    "fast-xml-parser": "^5.0.0"
   }
 }
