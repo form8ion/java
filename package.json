@@ -49,6 +49,10 @@
     "access": "public",
     "provenance": true
   },
+  "dependencies": {
+    "@form8ion/core": "^4.2.0",
+    "fast-xml-parser": "^5.0.0"
+  },
   "devDependencies": {
     "@cucumber/cucumber": "12.5.0",
     "@form8ion/commitlint-config": "2.0.8",
@@ -75,9 +79,5 @@
     "rollup-plugin-auto-external": "2.0.0",
     "vitest": "3.2.4",
     "vitest-when": "0.10.0"
-  },
-  "dependencies": {
-    "@form8ion/core": "^4.2.0",
-    "fast-xml-parser": "^5.0.0"
   }
 }
