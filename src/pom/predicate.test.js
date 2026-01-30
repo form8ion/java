@@ -2,7 +2,7 @@ import {fileExists} from '@form8ion/core';
 
 import {afterEach, describe, it, vi, expect} from 'vitest';
 import any from '@travi/any';
-import {when} from 'jest-when';
+import {when} from 'vitest-when';
 
 import pomExists from './predicate.js';
 
@@ -16,13 +16,13 @@ describe('maven predicate', () => {
   });
 
   it('should return `true` when a root pom exists', async () => {
-    when(fileExists).calledWith(`${projectRoot}/pom.xml`).mockReturnValue(true);
+    when(fileExists).calledWith(`${projectRoot}/pom.xml`).thenReturn(true);
 
     expect(await pomExists({projectRoot})).toBe(true);
   });
 
   it('should return `false` when a root pom does not exist', async () => {
-    when(fileExists).calledWith(`${projectRoot}/pom.xml`).mockReturnValue(false);
+    when(fileExists).calledWith(`${projectRoot}/pom.xml`).thenReturn(false);
 
     expect(await pomExists({projectRoot})).toBe(false);
   });

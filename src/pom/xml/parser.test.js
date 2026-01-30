@@ -3,7 +3,7 @@ import {XMLParser} from 'fast-xml-parser';
 
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
-import {when} from 'jest-when';
+import {when} from 'vitest-when';
 
 import parseFile from './parser.js';
 
@@ -21,8 +21,8 @@ describe('xml parser', () => {
     const parsedContent = any.simpleObject();
     const parse = vi.fn();
     XMLParser.mockReturnValue({parse});
-    when(fs.readFile).calledWith(pathToFile, 'utf-8').mockResolvedValue(xmlContent);
-    when(parse).calledWith(xmlContent).mockReturnValue(parsedContent);
+    when(fs.readFile).calledWith(pathToFile, 'utf-8').thenResolve(xmlContent);
+    when(parse).calledWith(xmlContent).thenReturn(parsedContent);
 
     expect(await parseFile({path: pathToFile})).toEqual(parsedContent);
   });

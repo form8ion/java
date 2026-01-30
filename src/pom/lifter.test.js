@@ -1,6 +1,6 @@
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
-import {when} from 'jest-when';
+import {when} from 'vitest-when';
 
 import {parse, write} from './xml/index.js';
 import {getPathTo} from './file.js';
@@ -23,11 +23,11 @@ describe('pom lifter', () => {
     const vcsDetails = any.simpleObject();
     const existingProjectDetails = any.simpleObject();
     const scmDetails = any.simpleObject();
-    when(getPathTo).calledWith(projectRoot).mockReturnValue(pathToPomFile);
+    when(getPathTo).calledWith(projectRoot).thenReturn(pathToPomFile);
     when(parse)
       .calledWith({path: pathToPomFile})
-      .mockResolvedValue({project: existingProjectDetails});
-    when(defineScmDetails).calledWith(vcsDetails).mockReturnValue(scmDetails);
+      .thenResolve({project: existingProjectDetails});
+    when(defineScmDetails).calledWith(vcsDetails).thenReturn(scmDetails);
 
     expect(await liftPom({projectRoot, vcs: vcsDetails})).toEqual({});
     expect(write).toHaveBeenCalledWith({

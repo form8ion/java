@@ -3,7 +3,7 @@ import {XMLBuilder} from 'fast-xml-parser';
 
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import any from '@travi/any';
-import {when} from 'jest-when';
+import {when} from 'vitest-when';
 
 import write from './writer.js';
 
@@ -20,8 +20,8 @@ describe('xml writer', () => {
     const contents = any.simpleObject();
     const build = vi.fn();
     const renderedXml = any.string();
-    when(XMLBuilder).calledWith({format: true}).mockReturnValue({build});
-    when(build).calledWith(contents).mockReturnValue(renderedXml);
+    when(XMLBuilder).calledWith({format: true}).thenReturn({build});
+    when(build).calledWith(contents).thenReturn(renderedXml);
 
     await write({path: pathToFile, contents});
 
