@@ -13,6 +13,8 @@
   "main": "./lib/index.js",
   "sideEffects": false,
   "scripts": {
+    "pretest": "run-s build",
+    "test": "npm-run-all --print-label --parallel lint:* --parallel test:*",
     "build:js": "rollup --config",
     "watch": "run-s 'build:js -- --watch'",
     "clean": "rimraf ./lib",
@@ -37,8 +39,7 @@
     "lint:gherkin": "gherkin-lint --config=.gherkin-lintrc.json",
     "lint:js": "eslint . --cache",
     "lint:js:fix": "run-s 'lint:js -- --fix'",
-    "lint:publish": "publint --strict",
-    "test": "npm-run-all --print-label build --parallel lint:* --parallel test:*"
+    "lint:publish": "publint --strict"
   },
   "files": [
     "example.js",
