@@ -20,7 +20,7 @@ describe('xml parser', () => {
     const xmlContent = any.string();
     const parsedContent = any.simpleObject();
     const parse = vi.fn();
-    XMLParser.mockReturnValue({parse});
+    when(XMLParser).calledWith().thenReturn({parse});
     when(fs.readFile).calledWith(pathToFile, 'utf-8').thenResolve(xmlContent);
     when(parse).calledWith(xmlContent).thenReturn(parsedContent);
 
