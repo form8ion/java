@@ -10,8 +10,8 @@ describe('pom scm details', () => {
     const host = any.word();
 
     expect(defineScmDetails({owner, name, host})).toEqual({
-      connection: `scm:git:git://${host}/${owner}/${name}.git`,
-      developerConnection: `scm:git:ssh://${host}/${owner}/${name}.git`,
+      connection: `scm:git:https://${host}/${owner}/${name}.git`,
+      developerConnection: `scm:git:https://${host}/${owner}/${name}.git`,
       tag: 'HEAD',
       url: `https://${host}/${owner}/${name}`
     });

@@ -24,8 +24,9 @@ Then('vcs details are defined in the pom', async function () {
     scm,
     {
       tag: 'HEAD',
-      connection: `scm:git:git://${this.vcsDetails.host}/${this.vcsDetails.owner}/${this.vcsDetails.name}.git`,
-      developerConnection: `scm:git:ssh://${this.vcsDetails.host}/${this.vcsDetails.owner}/${this.vcsDetails.name}.git`,
+      connection: `scm:git:https://${this.vcsDetails.host}/${this.vcsDetails.owner}/${this.vcsDetails.name}.git`,
+      developerConnection:
+        `scm:git:https://${this.vcsDetails.host}/${this.vcsDetails.owner}/${this.vcsDetails.name}.git`,
       url: `https://${this.vcsDetails.host}/${this.vcsDetails.owner}/${this.vcsDetails.name}`
     }
   );
