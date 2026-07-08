@@ -40,6 +40,7 @@ Java language plugin for the @form8ion toolset
 [![MIT license][license-badge]][license-link]
 [![npm][npm-badge]][npm-link]
 [![Try @form8ion/java on RunKit][runkit-badge]][runkit-link]
+![node][node-badge]
 
 <!--consumer-badges end -->
 
@@ -149,3 +150,5 @@ $ npm test
 [runkit-link]: https://npm.runkit.com/@form8ion/java
 
 [runkit-badge]: https://badge.runkitcdn.com/@form8ion/java.svg
+
+[node-badge]: https://img.shields.io/node/v/@form8ion/java?logo=node.js

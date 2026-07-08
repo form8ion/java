@@ -15,6 +15,24 @@ env:
 permissions:
   contents: read
 jobs:
+  verify-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node:
+          - 22.22.2
+          - 24.15.0
+    steps:
+      - uses: actions/checkout@v6.0.1
+      - name: Setup node
+        uses: actions/setup-node@v6.1.0
+        with:
+          cache: npm
+          node-version: ${{ matrix.node }}
+      - run: npm clean-install
+      - run: npm install --global corepack@latest
+      - run: corepack npm audit signatures
+      - run: npm test
   verify:
     runs-on: ubuntu-latest
     steps:
@@ -49,6 +67,7 @@ jobs:
     needs:
       - verify
       - release
+      - verify-matrix
     if: ${{ !cancelled() }}
     steps:
       - name: All matrix versions passed
