@@ -2,7 +2,7 @@ import {parse, write} from './xml/index.js';
 import {getPathTo} from './file.js';
 import defineScmDetails from './scm.js';
 
-export default async function ({projectRoot, vcs}) {
+export default async function liftPom({projectRoot, vcs}) {
   const pathToPom = getPathTo(projectRoot);
   const existingPomContents = await parse({path: pathToPom});
 

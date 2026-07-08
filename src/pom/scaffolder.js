@@ -1,7 +1,7 @@
 import {write} from './xml/index.js';
 import {getPathTo} from './file.js';
 
-export default async function ({projectRoot, projectName}) {
+export default async function scaffoldPom({projectRoot, projectName}) {
   await write({
     path: getPathTo(projectRoot),
     contents: {
