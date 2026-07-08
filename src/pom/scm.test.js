@@ -9,7 +9,11 @@ describe('pom scm details', () => {
     const name = any.word();
     const host = any.word();
 
-    expect(defineScmDetails({owner, name, host}))
-      .toEqual({tag: 'HEAD', url: `https://${host}/${owner}/${name}`});
+    expect(defineScmDetails({owner, name, host})).toEqual({
+      connection: `scm:git:git://${host}/${owner}/${name}.git`,
+      developerConnection: `scm:git:ssh://${host}/${owner}/${name}.git`,
+      tag: 'HEAD',
+      url: `https://${host}/${owner}/${name}`
+    });
   });
 });

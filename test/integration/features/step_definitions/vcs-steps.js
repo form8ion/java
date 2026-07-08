@@ -12,13 +12,21 @@ Given('vcs details are not defined in the pom', async function () {
 Given('the repository is hosted on github.com', async function () {
   const owner = any.word();
   const repositoryName = any.word();
-  this.vcsDetails = {host: 'github.com', owner, name: repositoryName};
-  this.vcsUrl = `https://github.com/${owner}/${repositoryName}`;
+  const vcsHost = any.word();
+  this.vcsDetails = {host: vcsHost, owner, name: repositoryName};
 });
 
 Then('vcs details are defined in the pom', async function () {
   const parser = new XMLParser();
   const {project: {scm}} = parser.parse(await fs.readFile(`${this.projectRoot}/pom.xml`, 'utf-8'));
 
-  assert.deepEqual(scm, {tag: 'HEAD', url: this.vcsUrl});
+  assert.deepEqual(
+    scm,
+    {
+      tag: 'HEAD',
+      connection: `scm:git:git://${this.vcsDetails.host}/${this.vcsDetails.owner}/${this.vcsDetails.name}.git`,
+      developerConnection: `scm:git:ssh://${this.vcsDetails.host}/${this.vcsDetails.owner}/${this.vcsDetails.name}.git`,
+      url: `https://${this.vcsDetails.host}/${this.vcsDetails.owner}/${this.vcsDetails.name}`
+    }
+  );
 });
