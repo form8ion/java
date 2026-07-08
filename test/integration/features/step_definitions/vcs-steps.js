@@ -12,7 +12,7 @@ Given('vcs details are not defined in the pom', async function () {
 Given('the repository is hosted on github.com', async function () {
   const owner = any.word();
   const repositoryName = any.word();
-  this.vcsDetails = {host: 'github', owner, name: repositoryName};
+  this.vcsDetails = {host: 'github.com', owner, name: repositoryName};
   this.vcsUrl = `https://github.com/${owner}/${repositoryName}`;
 });
 
