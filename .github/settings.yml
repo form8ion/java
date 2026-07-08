@@ -2,7 +2,7 @@ _extends: .github
 repository:
   name: java
   description: Java language plugin for the @form8ion toolset
-  homepage: https://npm.im/@form8ion/java
+  homepage: https://www.npmjs.com/package/@form8ion/java
   private: false
 branches:
   - name: master
