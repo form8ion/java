@@ -54,6 +54,7 @@ jobs:
   release:
     needs:
       - verify
+      - verify-matrix
     permissions:
       contents: write
       id-token: write
